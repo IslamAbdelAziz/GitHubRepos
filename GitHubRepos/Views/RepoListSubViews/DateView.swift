@@ -18,8 +18,12 @@ struct DateView: View {
     var body: some View {
         if let diff = date?.getDiffInMonths(), diff > 6 {
             Text(diff > 12 ? "\(diff / 12) years ago" : "\(diff) months ago")
+                .font(.caption)
+                .foregroundStyle(.black.opacity(0.7))
         } else {
             Text(dateFormatter.string(from: date ?? Date()))
+                .font(.caption)
+                .foregroundStyle(.black.opacity(0.7))
         }
     }
 }

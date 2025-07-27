@@ -17,28 +17,32 @@ struct RepoDetailsView: View {
                 .fontWeight(.bold)
             HStack {
                 Image(systemName: "calendar")
+                    .foregroundStyle(.gray)
                 DateView(date: repo.creationDate)
             }
             Text("Description")
-                .font(.title2)
+                .font(.title3)
                 .fontWeight(.semibold)
                 .padding(.top, 20)
+                .foregroundColor(.secondary)
             
             Text(repo.description ?? "")
                 .multilineTextAlignment(.leading)
                 .padding(.vertical, 8)
             
             Text("Owner")
-                .font(.title2)
+                .font(.title3)
                 .fontWeight(.semibold)
                 .padding(.top, 20)
-            
-            Text("\(repo.owner?.login ?? "")")
-                .font(.headline)
                 .foregroundColor(.secondary)
             
-            AvatarView(imgUrl: repo.owner?.avatarUrl)
+            HStack {
+                AvatarView(imgUrl: repo.owner?.avatarUrl)
+                Text("\(repo.owner?.login ?? "")")
+                    .font(.headline)
+            }
             
+
             Spacer()
             
         }

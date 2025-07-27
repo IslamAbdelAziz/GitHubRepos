@@ -18,11 +18,21 @@ struct ReposListView: View {
                     NavigationLink {
                         RepoDetailsView(repo: repo)
                             .navigationTransition(.zoom(sourceID: repo.id, in: namespace))
-
                     } label: {
-                        HStack {
-                            //Owner
-                            VStack{
+                        VStack(alignment: .leading) {
+                            // Repo name
+                            Text(repo.name ?? "")
+                                .font(.largeTitle)
+                                .fontWeight(.bold)
+                                .foregroundStyle(.black.opacity(0.8))
+                            
+                            HStack {
+                                Image(systemName: "calendar")
+                                    .foregroundStyle(.gray)
+                                DateView(date: repo.creationDate)
+                            }
+                            Spacer()
+                            HStack {
                                 // Owner Image
                                 AvatarView(imgUrl: repo.owner?.avatarUrl)
                                 // Owner Name
@@ -30,26 +40,7 @@ struct ReposListView: View {
                                     .font(.title2)
                                     .multilineTextAlignment(.center)
                             }
-                            .frame(width: 100)
-                            .padding(.top, 8)
-                            
-                            // Info
-                            VStack(alignment: .leading) {
-                                Spacer()
-                                // Repo name
-                                Text(repo.name ?? "")
-                                    .font(.title2)
-                                    .fontWeight(.semibold)
-                                // Repo Date
-                                
-                                DateView(date: repo.creationDate)
-                                    .font(.caption)
-                                Spacer()
-                                
-                            }
-                            .padding(.vertical, 8)
-                            .padding(.leading, 16)
-                            
+                            .padding(.bottom)
                         }
                     }
                     .matchedTransitionSource(id: repo.id, in: namespace)

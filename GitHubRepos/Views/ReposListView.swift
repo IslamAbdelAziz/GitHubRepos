@@ -9,6 +9,7 @@ import SwiftUI
 
 struct ReposListView: View {
     @Environment(RepoDataStore.self) private var repoDataStore
+    @Namespace var namespace
     
     var body: some View {
         NavigationStack {
@@ -16,7 +17,8 @@ struct ReposListView: View {
                 ForEach(repoDataStore.reposList) { repo in
                     NavigationLink {
                         Text(repo.name ?? "")
-                        
+                            .navigationTransition(.zoom(sourceID: repo.id, in: namespace))
+
                     } label: {
                         HStack {
                             //Owner
@@ -32,13 +34,16 @@ struct ReposListView: View {
                             .padding(.top, 8)
                             
                             // Info
-                            VStack {
+                            VStack(alignment: .leading) {
+                                Spacer()
                                 // Repo name
                                 Text(repo.name ?? "")
                                     .font(.title2)
                                     .fontWeight(.semibold)
                                 // Repo Date
                                 
+                                DateView(date: repo.creationDate)
+                                    .font(.caption)
                                 Spacer()
                                 
                             }
@@ -47,9 +52,10 @@ struct ReposListView: View {
                             
                         }
                     }
+                    .matchedTransitionSource(id: repo.id, in: namespace)
                 }
             }
-            .navigationTitle("GitHub Repos")
+            .navigationTitle(Text("GitHub Repos"))
         }
         .onAppear {
             Task {

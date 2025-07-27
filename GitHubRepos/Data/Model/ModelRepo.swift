@@ -24,6 +24,18 @@ struct ModelRepo: Codable, Identifiable {
         self.owner = try container.decodeIfPresent(ModelOwner.self, forKey: .owner)
         self.creationDate = randomDate(fromDaysAgo: 5, toYearsAgo: 5)
     }
+    init(id: Int? = nil, name: String? = nil, fullName: String? = nil, description: String? = nil, owner: ModelOwner? = nil) {
+        self.id = id
+        self.name = name
+        self.fullName = fullName
+        self.description = description
+        self.owner = owner
+    }
+    
+    static
+    func createSample() -> ModelRepo {
+        ModelRepo(id: 121, name: "Sample Repo", fullName: "Sample Repo", description: "This is a sampleis a sampleis a sampleis a sampleis a sampleis a sampleis a sampleis a sampleis a sampleis a sampleis a sampleis a sampleis a sampleis a sampleis a sampleis a sampleis a sampleis a sampleis a sampleis a sample repo", owner: .init(id: 1221, login: "sampleUser", avatarUrl: "https://example.com/avatar.png"))
+    }
 }
 
 struct ModelOwner: Codable {

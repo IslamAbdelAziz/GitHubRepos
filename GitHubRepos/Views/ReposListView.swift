@@ -16,7 +16,7 @@ struct ReposListView: View {
             List {
                 ForEach(repoDataStore.reposList) { repo in
                     NavigationLink {
-                        Text(repo.name ?? "")
+                        RepoDetailsView(repo: repo)
                             .navigationTransition(.zoom(sourceID: repo.id, in: namespace))
 
                     } label: {

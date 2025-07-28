@@ -21,7 +21,7 @@ class RepoDataStore {
     }
     
     func loadRepos() async throws {
-        let resource = GenericResource(api: API.repoList, modelType: [ModelRepo].self)
+        let resource = GenericResource(url: API.repoList.path, method: API.repoList.method, modelType: [ModelRepo].self)
         do {
             reposList = try await httpClient.load(resource) ?? []
         } catch {

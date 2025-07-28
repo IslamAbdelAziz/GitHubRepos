@@ -7,8 +7,6 @@
 
 import Foundation
 
-import Foundation
-
 //MARK: Client
 enum HTTPMethod {
     case get
@@ -40,10 +38,10 @@ struct HTTPClient {
     }
     
     func load<T: Codable>(_ resource: GenericResource<T>) async throws -> T? {
-        var request = URLRequest(url: resource.api.path)
-        request.httpMethod = resource.api.method.name
+        var request = URLRequest(url: resource.url)
+        request.httpMethod = resource.method.name
         
-        switch resource.api.method {
+        switch resource.method {
         case .post(let body):
             request.httpBody = body
             

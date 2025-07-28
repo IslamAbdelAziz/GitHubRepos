@@ -1,0 +1,29 @@
+{
+  "configurations" : [
+    {
+      "id" : "214CBFF8-0854-4C30-B9BA-F8A378189852",
+      "name" : "Test Scheme Action",
+      "options" : {
+
+      }
+    }
+  ],
+  "defaultOptions" : {
+    "targetForVariableExpansion" : {
+      "containerPath" : "container:GitHubRepos.xcodeproj",
+      "identifier" : "A533C8BD2E366B9200FC0A59",
+      "name" : "GitHubRepos"
+    }
+  },
+  "testTargets" : [
+    {
+      "parallelizable" : true,
+      "target" : {
+        "containerPath" : "container:GitHubRepos.xcodeproj",
+        "identifier" : "A579C11B2E378D68006298C9",
+        "name" : "GitHubReposTests"
+      }
+    }
+  ],
+  "version" : 1
+}

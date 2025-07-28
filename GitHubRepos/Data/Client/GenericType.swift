@@ -9,7 +9,8 @@ import Foundation
 
 //MARK: Generic Resource
 struct GenericResource<T: Codable> {
-    var api: API
+    var url: URL
+    var method: HTTPMethod
     var modelType: T.Type
 }
 

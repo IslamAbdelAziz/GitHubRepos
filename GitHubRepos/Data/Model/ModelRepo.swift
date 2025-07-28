@@ -29,6 +29,7 @@ struct ModelRepo: Codable, Identifiable {
         self.name = name
         self.fullName = fullName
         self.description = description
+        self.creationDate = randomDate(fromDaysAgo: 5, toYearsAgo: 5)
         self.owner = owner
     }
     
